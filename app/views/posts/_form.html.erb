@@ -1,0 +1,25 @@
+<%= simple_form_for(@post, html: { class: 'vertical_form' }) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> Imposible guardar por:</h2>
+    </div>
+  <% end %>
+
+  <div class= "form-group" >
+    <%= f.input :title, class: 'form-control' %>
+  </div>
+   <div class="field">
+    <%= f.input :image%>
+  </div>
+  <div class="field">
+    <%= f.label :link %><br>
+    <%= f.text_field :link, class: 'form-control'%>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, class: 'form-control'%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

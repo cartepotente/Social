@@ -1,0 +1,16 @@
+
+    <% @posts.each do |post| %>
+
+      <%= link_to (image_tag post.image.url(:small)), post %></h2>
+      <h2><%= link_to post.title, post %></h2>
+      <p> <%=post.comments.count %> Comentarios</p>
+      <p> <%= post.get_upvotes.size %> Gustan </p>
+	  <p> <%= post.get_downvotes.size %> No gustan</p>
+       
+        
+    <% end %>
+ 
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>

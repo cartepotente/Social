@@ -1,0 +1,42 @@
+ 
+  <%= image_tag @post.image.url(:medio) %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @post.link %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @post.description %>
+</p>
+
+<p>
+   <%= @post.user.name %>
+</p>
+
+<p> <%= @post.get_upvotes.size %> Gustan </p>
+<p> <%= @post.get_downvotes.size %> No gustan</p>
+<%= link_to "Me Gusta", like_post_path(@post), method: :get %> |
+<%= link_to "No me gusta", dislike_post_path(@post), method: :get %>
+
+
+<div id="comment">
+	<h2 class="comment-count"> <%= pluralize(@post.comments.count, "Comentario") %></h2>
+	<% @comments.each do |c|%>
+	<div class="comment">
+		<p class="username"><%= c.user.name %></p>
+		<p class="conent"><%= c.comentario %></p>
+	</div>
+	<% end %>
+	<%= render 'posts/comment' %>
+
+
+</div>
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
